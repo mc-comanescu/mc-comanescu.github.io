@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mihail Comanescu — Resume</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --fg: #111;
+      --muted: #555;
+      --accent: #0b5fff;
+      --bg: #fff;
+      --card: #fafafa;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, Segoe UI, Roboto, Arial, sans-serif;
+      background: #f3f4f6;
+      color: var(--fg);
+      line-height: 1.45;
+    }
+    .page {
+      max-width: 900px;
+      margin: 32px auto;
+      background: var(--bg);
+      padding: 36px 40px;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    }
+    header {
+      display: flex;
+      gap: 20px;
+      align-items: flex-end;
+      justify-content: space-between;
+      border-bottom: 2px solid #eee;
+      padding-bottom: 16px;
+      margin-bottom: 20px;
+    }
+    h1 { margin: 0; font-size: 30px; letter-spacing: -0.5px; }
+    .subtitle { font-size: 15px; color: var(--muted); margin-top: 4px; }
+    .contact { font-size: 13.5px; color: var(--muted); text-align: right; line-height: 1.5; }
+    .contact a { color: var(--accent); text-decoration: none; }
+    section { margin-top: 20px; }
+    h2 {
+      font-size: 15px;
+      letter-spacing: 0.9px;
+      text-transform: uppercase;
+      color: #222;
+      border-left: 4px solid var(--accent);
+      padding-left: 10px;
+      margin: 20px 0 8px;
+      font-weight: 600;
+    }
+    .summary { line-height: 1.55; font-size: 14px; }
+    .skills {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      font-size: 13.5px;
+    }
+    .skill-block {
+      background: var(--card);
+      padding: 12px 14px;
+      border-radius: 8px;
+      border: 1px solid #eee;
+    }
+    .skill-block b { display: block; margin-bottom: 5px; color: #222; }
+    .role { margin: 16px 0; }
+    .role .top { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; margin-bottom: 6px; }
+    .role .company { font-weight: 700; font-size: 15px; }
+    .role .meta { color: var(--muted); font-size: 13px; white-space: nowrap; }
+    ul { margin: 4px 0 0 18px; padding-left: 0; }
+    li { margin-bottom: 5px; font-size: 13.5px; }
+    .footer {
+      margin-top: 30px;
+      color: var(--muted);
+      font-size: 11px;
+      text-align: center;
+    }
+    .actions {
+      position: sticky;
+      top: 16px;
+      z-index: 100;
+      display: flex;
+      justify-content: flex-end;
+      margin: 0 0 20px 0;
+      padding: 10px 0;
+      background: rgba(243,244,246,0.95);
+      backdrop-filter: blur(8px);
+    }
+    .btn {
+      appearance: none;
+      border: none;
+      border-radius: 8px;
+      padding: 11px 18px;
+      font-weight: 600;
+      cursor: pointer;
+      font-size: 14px;
+    }
+    .btn.primary {
+      background: var(--accent);
+      color: white;
+      box-shadow: 0 4px 12px rgba(11,95,255,0.25);
+    }
+    .btn.secondary {
+      background: #444;
+      color: white;
+      margin-left: 12px;
+    }
+
+    @media print {
+      @page { size: letter; margin: 8mm 10mm; }
+      .actions, .actions * { display: none !important; }
+      body { background: white !important; margin: 0 !important; padding: 0 !important; font-size: 10.5pt !important; line-height: 1.28 !important; }
+      .page { box-shadow: none !important; border-radius: 0 !important; margin: 0 !important; padding: 0 !important; width: 100% !important; max-width: none !important; background: white !important; }
+      h1 { font-size: 21pt !important; }
+      h2 { font-size: 12pt !important; }
+      .summary, li, .skill-block { font-size: 9.8pt !important; line-height: 1.25 !important; }
+      a { color: #000 !important; text-decoration: underline !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="actions">
+    <button class="btn primary" onclick="window.print()">Save as PDF</button>
+    <button class="btn secondary" onclick="window.print()">Print</button>
+  </div>
+  <div class="page" id="resume">
+    <header>
+      <div>
+        <h1>MIHAIL C. COMANESCU</h1>
+        <div class="subtitle">Senior Software Engineer — Backend Systems, Data Pipelines & Privacy/Compliance</div>
+      </div>
+      <div class="contact">
+        New York City Metropolitan Area | Remote<br>
+        T: 347-464-8799<br>
+        <a href="mailto:mihail@comanescu.net">mihail@comanescu.net</a><br>
+        <a href="https://linkedin.com/in/mihailcomanescu">linkedin.com/in/mihailcomanescu</a><br>
+        <a href="https://mc-comanescu.github.io">mc-comanescu.github.io</a><br>
+        U.S. Citizen
+      </div>
+    </header>
+
+    <section>
+      <h2>Summary</h2>
+      <p class="summary">
+        Senior Software Engineer with 12+ years building high-performance backend systems, distributed data pipelines and large-scale infrastructure. Specialized in low-latency news processing, entity extraction, taxonomy/knowledge graphs, system modernization, billing and data privacy & compliance. Deep expertise in C/C++, Java, custom parsers/grammars, JNI and Linux systems. Proven ability to re-architect legacy platforms and integrate AI services into production pipelines.
+      </p>
+    </section>
+
+    <section>
+      <h2>Technical Skills</h2>
+      <div class="skills">
+        <div class="skill-block"><b>Languages & Core</b>C/C++, Java, Python, Bash, TypeScript/Kotlin, Flex/Bison, ZeroMQ</div>
+        <div class="skill-block"><b>Systems & Perf</b>Linux internals, POSIX, GDB/Valgrind/perf, Jemalloc, memory optimization, 200ms SLAs</div>
+        <div class="skill-block"><b>Data & NLP</b>Custom parsers/grammars, entity extraction, taxonomy/knowledge graphs, NLP, clustering, sentiment</div>
+        <div class="skill-block"><b>Distributed & Cloud</b>AWS CDK, WAF/S3/CloudFront/CloudWatch, comdb2, OpenStack S3, microservices, APIs</div>
+        <div class="skill-block"><b>Integration</b>JNI, SpiderMonkey, BDL, Apache Luwak/Lucene, Google Translator, in-house classifiers</div>
+        <div class="skill-block"><b>Infrastructure</b>KVM/LXC, DRBD/Linux HA/GlusterFS/NFS, OpenVPN, RPM/Puppet, CI/CD, disaster recovery</div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Professional Experience</h2>
+
+      <div class="role">
+        <div class="top">
+          <div class="company">Amazon — Senior Software Engineer</div>
+          <div class="meta">Sep 2022 – Present · Remote</div>
+        </div>
+        <ul>
+          <li>JustWalkOut “Store in a Box” / Grab-and-Go self checkout. Billing, Data Privacy & Compliance.</li>
+          <li>Built privacy.justwalkout.com: credential-less auth via shopping history, job engine to collect/purge PII from amazon.com internals, data export or purge confirmation. AWS CDK TypeScript/Kotlin, WAF/S3/CloudFront/CloudWatch, control plane with secure reach-ins. Balanced security vs CCPA/GDPR painless process.</li>
+          <li>Built billing/reporting for justwalkout.com merchants: bespoke billing plans, periodic invoicing, integration with Amazon Central Transaction Ledger, end-to-end workflow to payment deposit, revenue recognition, accounting books, settlement/reconciliation for US/UK.</li>
+          <li>Built https://www.amazon.com/atep/taxExemption: tax-exempt integration with Amazon tax engine for JustWalkOut, enabling hospitals/universities to use tax-exempt status at checkout and reporting.</li>
+        </ul>
+      </div>
+
+      <div class="role">
+        <div class="top">
+          <div class="company">Bloomberg LP — Senior Software Engineer</div>
+          <div class="meta">Nov 2018 – Sep 2022 · New York, NY</div>
+        </div>
+        <ul>
+          <li>Re-architected legacy monolithic Terminal functionality to modern solutions with stakeholders.</li>
+          <li>Custom C integration of SpiderMonkey JS engine with backend; JNI wrappers bridging BDL C++ and Java services.</li>
+          <li>Designed distributed news ingestion pipeline: feed ingest, UUID deduplication, entity extraction for people/stocks/corporations/corporate actions/sentiment, metadata annotation for search/analytics.</li>
+          <li>Authored custom parsers/grammars; integrated Google Translator and in-house classifier into annotation pipeline.</li>
+          <li>Ported taxonomy/knowledge-graph tools from Oracle 12c/big-iron to comdb2 and OpenStack S3.</li>
+          <li>Migrated IDOL rule-based tagging to in-house solution on Apache Luwak & Apache Lucene.</li>
+          <li>Maintained Terminal functions REQ&lt;GO&gt;, TDMS&lt;GO&gt;.</li>
+        </ul>
+      </div>
+
+      <div class="role">
+        <div class="top">
+          <div class="company">Moody’s Corporation — Senior Software Engineer / Data Engineer</div>
+          <div class="meta">May 2013 – Nov 2018 · Roseland, NJ</div>
+        </div>
+        <ul>
+          <li>Extended/optimized real-time news processing engine for NLP, entity extraction, summarization, clustering, classification to meet 200 ms full-text SLA with improved memory density.</li>
+          <li>Developed C/C++ data-mining service around National Market System Tape A/B for streaming orders/quotes/trades.</li>
+          <li>Built high-parallel Python tools for archived content delivery; extended taxonomy/symbology engine.</li>
+          <li>Research team for clustering, impact, sentiment and volatility analysis improvements; memory density and network performance libraries for real-time processors.</li>
+          <li>Worked with sales to expand news archive offering via efficient slicing/replication/reprocessing of master archive for customer distribution contracts.</li>
+        </ul>
+      </div>
+
+      <div class="role">
+        <div class="top">
+          <div class="company">OnSIP — Software Engineer</div>
+          <div class="meta">Apr 2011 – Apr 2013 · New York, NY</div>
+        </div>
+        <ul>
+          <li>Backend engineer for OnSIP VoIP SaaS platform. Developed revenue-generating components, contributed to FreeSWITCH/Asterisk open source.</li>
+          <li>Refactored Asterisk to distributed OpenSIPs + FreeSwitch for PSTN/Inbound/911 scaling; built call parking service.</li>
+          <li>Built fraud detection/security monitoring with BASH/PHP/NMAP; automated provisioning/boot services for Grandstream/Cisco/Polycom; RPM packaging via Puppet.</li>
+        </ul>
+      </div>
+
+      <div class="role">
+        <div class="top">
+          <div class="company">BCNSinc — Co-Founder / Lead Developer</div>
+          <div class="meta">Sep 2009 – Jun 2017 · Greater New York City Area</div>
+        </div>
+        <ul>
+          <li>Co-founded cloud hosting and SaaS infrastructure for medium businesses. Architected cloud stack; built SaaS templates for hosted phones/storage/email/remote access.</li>
+        </ul>
+      </div>
+
+      <div class="role">
+        <div class="top">
+          <div class="company">Shooloo.org — Technology Specialist, Volunteer</div>
+          <div class="meta">Feb 2013 – Nov 2018</div>
+        </div>
+        <ul>
+          <li>Lead engineer for system planning and administration.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <h2>Education</h2>
+      <p><strong>B.S., Computer Science – Software Engineering</strong><br>College for Computer Science and Mathematics of Craiova, 2009</p>
+    </section>
+
+    <section>
+      <h2>Languages</h2>
+      <p>English — Native or bilingual | Romanian — Native or bilingual | French — Elementary</p>
+    </section>
+
+    <div class="footer">
+      U.S. Citizen • Optimized for print/PDF
+    </div>
+  </div>
+</body>
+</html>
