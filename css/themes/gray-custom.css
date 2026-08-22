@@ -6,7 +6,7 @@ main {
 }
 
 .icons-social a {
-	color: #8FAFC0;
+	color: #FFFFFF;
 }
 
-/* icons use currentColor -> inherit the accent from .icons-social a */
+/* icons use currentColor -> inherit white from .icons-social a */
