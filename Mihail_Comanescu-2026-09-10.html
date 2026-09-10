@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Mihail Comanescu — Resume</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&amp;display=swap" rel="stylesheet"/>
+<style>
+    :root {
+      --fg: #C5C5C5;
+      --muted: #6D6E6E;
+      --accent: #8FAFC0;
+      --bg: #101010;
+      --card: #1D1D1D;
+      --bright: #D8D8D8;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, Segoe UI, Roboto, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--fg);
+      line-height: 1.38;
+    }
+    .page {
+      max-width: 900px;
+      margin: 32px auto;
+      background: #1D1D1D;
+      padding: 36px 40px;
+      border-radius: 12px;
+      border: none;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+      color: var(--fg);
+    }
+    @media (max-width: 768px) {
+      html, body { overflow-x: hidden; }
+      .page { margin: 0; padding: 16px; border-radius: 0; width: 100%; max-width: 100%; box-sizing: border-box; }
+      header { flex-direction: column; align-items: flex-start; gap: 8px; }
+      .contact { text-align: left; }
+      h1 { font-size: 22px; }
+.subtitle { font-size: 12px; }
+      .skill-group, .role, section, h2, p, ul, li { max-width: 100%; word-break: break-word; }
+      .role .top { flex-direction: column; align-items: flex-start; gap: 2px; }
+      .role .meta { white-space: normal; }
+    }
+    header {
+      display: flex;
+      gap: 20px;
+      align-items: flex-end;
+      justify-content: space-between;
+      border-bottom: 2px solid #2C2C2C;
+      padding-bottom: 8px;
+      margin-bottom: 8px;
+    }
+h1 { margin: 0; font-size: 28px; letter-spacing: -0.5px; color: var(--bright); }
+/* Compact inline skill groups: same visual language, far less vertical space */
+    .skill-group { margin: 3px 0; break-inside: avoid; page-break-inside: avoid; line-height: 1.3; }
+    .skill-label {
+      display: inline;
+      font-size: 10.5px;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: var(--muted);
+      margin: 0 6px 0 2px;
+      font-weight: 600;
+    }
+    .skill-text {
+      display: inline;
+      font-size: 12.5px;
+      color: var(--fg);
+    }
+    .skill-more {
+      font-size: 11.5px;
+      color: var(--muted);
+      line-height: 1.5;
+      margin-top: 10px;
+    }
+    .skill-more b { display: inline; margin: 0; color: var(--fg); font-size: 11.5px; }
+    .subtitle { font-size: 15px; color: var(--muted); margin-top: 4px; }
+    .contact { font-size: 13.5px; color: var(--muted); text-align: right; line-height: 1.3; }
+    .contact a { color: var(--accent); text-decoration: none; font-weight: 500; }
+/* margin-top collapses out of the section box at page-slice boundaries (header glued to top edge);
+   padding-top is inside the box so the breathing room always survives slicing. */
+    section { margin-top: 5px; padding-top: 3px; }
+    h2 {
+      font-size: 14px;
+      letter-spacing: 0.9px;
+      text-transform: uppercase;
+      color: #C5C5C5;
+      border-left: 4px solid var(--accent);
+      padding-left: 10px;
+margin: 9px 0 4px;
+      font-weight: 600;
+      break-after: avoid; /* keep header with its first content block */
+      page-break-after: avoid;
+    }
+.summary { line-height: 1.45; font-size: 13.5px; }
+    .role { margin: 7px 0; } /* do NOT avoid breaks inside .role — jobs are taller than the free page space
+       and an unbreakable block leaves a gap; bullets are protected individually (li) */
+/* Do NOT put break-inside:avoid on section — the whole section then refuses to split
+   across pages, leaving a large blank hole when it doesn't fit in the remaining space.
+   Granular units (.skill-group, .role, li) already keep themselves intact. */
+    li { break-inside: avoid; page-break-inside: avoid; }
+.role .top {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 10px;
+      margin-bottom: 4px;
+      break-after: avoid; /* never strand the job title+dates alone at the bottom of a page */
+      page-break-after: avoid;
+    }
+    .role .company { font-weight: 700; font-size: 15px; color: var(--bright); flex: 1 1 auto; min-width: 0; white-space: nowrap; }
+    .role .meta { color: var(--muted); font-size: 13px; white-space: nowrap; flex: 0 0 auto; text-align: right; }
+    ul { margin: 3px 0 0 18px; padding-left: 0; }
+    li { margin-bottom: 3px; font-size: 12.5px; }
+    .footer {
+      margin-top: 16px;
+      color: var(--muted);
+      font-size: 10.5px;
+      text-align: center;
+    }
+.actions {
+      max-width: 900px;
+      margin: 20px auto 8px;
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .btn.secondary { margin-left: 0; }
+    .btn {
+      appearance: none;
+      border: none;
+      border-radius: 8px;
+      padding: 11px 18px;
+      font-weight: 600;
+      cursor: pointer;
+      font-size: 14px;
+    }
+    .btn.primary {
+      background: var(--accent);
+      color: #101010;
+      border-color: var(--accent);
+      box-shadow: 0 4px 12px rgba(143,175,192,0.25);
+    }
+    .btn.secondary {
+      background: var(--accent);
+      color: #101010;
+      border-color: var(--accent);
+      box-shadow: 0 4px 12px rgba(143,175,192,0.25);
+      margin-left: 0;
+    }
+/* Applied only during html2pdf capture: full-bleed dark page so the PDF
+   background matches the website exactly (jsPDF pages are white by default). */
+.pdf-export #resume {
+      max-width: none;
+      margin: 0;
+      padding: 48px 56px;
+      border-radius: 0;
+      box-shadow: none;
+      background: var(--bg);
+    }
+    .pdf-export .skill-more { display: none; } /* long-tail keywords hidden in exported PDF */
+    @media print {
+      /* Explicit 0 margin: the .page padding below supplies all the breathing
+         room, so output is identical regardless of the browser's own default
+         print margins (those varied and were pushing content to a 3rd page). */
+      @page { size: letter; margin: 0; }
+      .actions, .actions * { display: none !important; }
+      :root {
+        --fg: #111 !important;
+        --muted: #555 !important;
+        --accent: #0b5fff !important;
+        --bg: #fff !important;
+        --card: #fafafa !important;
+        --bright: #111 !important;
+      }
+      body { background: white !important; margin: 0 !important; padding: 0 !important; }
+      .page {
+        box-shadow: none !important;
+        border-radius: 0 !important;
+        margin: 0 !important;
+        padding: 34px 48px !important;
+        width: 100% !important;
+        max-width: none !important;
+        background: white !important;
+        border: none !important;
+      }
+      /* Match the screen/PDF-export geometry so native browser printing does not
+         reflow titles, dates, or section widths differently. */
+      header {
+        display: flex !important;
+        gap: 20px !important;
+        align-items: flex-end !important;
+        justify-content: space-between !important;
+        border-bottom: 2px solid #eee !important;
+      }
+      .role .top {
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: baseline !important;
+        gap: 10px !important;
+      }
+      .role .company {
+        flex: 1 1 auto !important;
+        min-width: 0 !important;
+        white-space: nowrap !important;
+        color: #111 !important;
+      }
+      .role .meta {
+        flex: 0 0 auto !important;
+        white-space: nowrap !important;
+        text-align: right !important;
+      }
+h2 { color: #222 !important; border-left: 4px solid #0b5fff !important; }
+      .skill-label { color: #555 !important; }
+      h1 { color: #111 !important; }
+      .role .company { color: #111 !important; }
+      .skill-more { display: none !important; } /* long-tail keywords only for ATS/screen, kept out of print */
+    }
+  </style>
+</head>
+<body>
+<!-- Action buttons kept in normal flow ABOVE the captured element:
+     fixed/absolute elements outside #resume break html2canvas's height measurement
+     (caused blank first page + shifted content). -->
+<div class="actions">
+<button class="btn primary" onclick="downloadPDF()">Save as PDF</button>
+<button class="btn secondary" onclick="window.print()">Print / Save as PDF</button>
+</div>
+<div class="page" id="resume">
+<header>
+<div>
+<h1>MIHAIL C. COMANESCU</h1>
+<div class="subtitle">Senior Software Engineer — Distributed Systems, Cloud Infrastructure &amp; High-Performance Systems</div>
+</div>
+<div class="contact">
+    New York City Metropolitan Area · Remote · U.S. Citizen<br/>
+    T: 347-464-8799 · <a href="mailto:mihail@comanescu.net">mihail@comanescu.net</a><br/>
+    <a href="https://linkedin.com/in/mihailcomanescu">linkedin.com/in/mihailcomanescu</a> · <a href="https://mc-comanescu.github.io">mc-comanescu.github.io</a>
+  </div>
+</header>
+<section>
+<h2>Summary</h2>
+<p class="summary">
+    Senior Software Engineer with 15+ years owning the architecture, delivery, and operation of distributed systems and infrastructure at Amazon, Bloomberg, and Moody’s. Led complex initiatives spanning customer privacy, real-time news processing, financial data, billing, cloud platforms, and high-availability infrastructure at significant scale.
+    <br/>
+    Technical owner from requirements through production, with experience leading architecture, cross-team delivery, security reviews, incident response, and operational improvement. Mentors engineers toward Staff-level scope and contributes to hiring and technical leadership.
+  </p>
+</section>
+<section><h2>Technical Expertise</h2>
+<div class="skill-group"><span class="skill-label">Architecture &amp; Distributed Systems</span><span class="skill-text">System architecture · Distributed systems · High-throughput processing · Concurrency · Clustering/sharding · High availability</span></div>
+<div class="skill-group"><span class="skill-label">Cloud &amp; Infrastructure</span><span class="skill-text">AWS · Lambda · S3 · CloudFront · CDK · Linux · Virtualization · Production ownership · Observability · Deployment/rollback</span></div>
+<div class="skill-group"><span class="skill-label">Languages</span><span class="skill-text">C/C++ · Java · Python · Kotlin · TypeScript · Bash</span></div>
+<div class="skill-group"><span class="skill-label">Data, NLP &amp; AI</span><span class="skill-text">Real-time news processing · NLP/classification · Entity extraction · Machine translation · Lucene/Luwak · Knowledge graphs</span></div>
+<div class="skill-group"><span class="skill-label">Networking, Security &amp; Leadership</span><span class="skill-text">TCP/IP · ZeroMQ · SIP/RTP · FreeSWITCH/OpenSIPS · OpenVPN · Threat modeling · STRIDE/STAR · Architecture reviews · Hiring &amp; mentoring</span></div>
+</section>
+<section>
+<h2>Professional Experience</h2>
+<div class="role">
+<div class="top">
+<div class="company">Amazon — Senior Software Engineer</div>
+<div class="meta">Sep 2022 – Present · Remote</div>
+</div>
+<ul>
+<li>Served as the <strong>technical owner</strong> for a greenfield, multi-region privacy platform. Translated business requirements into architecture and design documents, presented designs to Security and senior leadership, and led implementation.</li>
+<li>Designed <strong>privacy.justwalkout.com</strong> to fulfill access and deletion requests across <strong>12+ Amazon domains</strong>, including Payments, Cart, Wallet, Merchant Catalog, Analytics, and Identity. Coordinated downstream requests, retries, and completion/failure tracking for each request.</li>
+<li>Owned the platform in production: <strong>on-call, deployments, rollbacks, observability, incident response, COEs, and operational reviews</strong>. Led cross-team response to source-of-truth failures that blocked shopper authentication; failures triggered <strong>Legal review to assess privacy-law exposure</strong>.</li>
+<li>Owned major components of the <strong>merchant billing platform</strong>, including invoicing and tax-exempt processing. Led technical scope and infrastructure work for <strong>UK marketplace expansion</strong>, including regional fleet commissioning, new domains, and cross-national access policies.</li>
+<li>Served as a <strong>Certified Security Guardian for Just Walk Out</strong>, leading STRIDE/STAR threat modeling and security reviews; also supported partner teams. Contributed to <strong>Hire and Develop the Best</strong> through 8–9 engineering interviews and mentored <strong>two engineers</strong> toward Staff-level growth.</li>
+</ul>
+</div>
+<div class="role">
+<div class="top">
+<div class="company">Bloomberg LP — Senior Software Engineer</div>
+<div class="meta">Nov 2018 – Sep 2022 · New York, NY</div>
+</div>
+<ul>
+<li>Engineered components of <strong>Newings</strong>, Bloomberg’s distributed news-ingestion and tagging platform, processing <strong>hundreds of news items per second</strong> under a <strong>250 ms deadline</strong>. Generated signatures for deduplication, identified topics, and annotated companies, securities identifiers, people, and other entities before archiving and indexing.</li>
+<li>Led Linux implementations of libraries beneath Newings during the migration from <strong>big-iron systems</strong>, reproducing legacy outputs across platforms and handling <strong>byte order and proprietary wire formats</strong> to preserve compatibility.</li>
+<li>Designed and implemented <strong>language-specific parsing and grammar rules</strong> with Bloomberg linguists and taxonomists, expanding the framework for languages including <strong>Korean, Russian, and Japanese</strong> and their regional financial-news conventions.</li>
+<li>Extended Bloomberg’s <strong>taxonomy and entity-resolution pipeline</strong> for corporate actions and company identity changes, triggering correction and reindexing workflows across the historical archive.</li>
+<li>Worked end-to-end through <strong>Bloomberg Terminal delivery</strong>, implementing client-facing functionality in the custom browser/JavaScript engine and extending C/C++ and Java components through <strong>JNI</strong>; also contributed to Grafana observability and <strong>dpkg-based fleet deployment</strong>.</li>
+</ul>
+</div>
+<div class="role">
+<div class="top">
+<div class="company">Moody’s — Senior Software/Data Engineer</div>
+<div class="meta">May 2013 – Nov 2018 · Roseland, NJ</div>
+</div>
+<ul>
+<li>Optimized real-time news processing for NLP, entity extraction, summarization, clustering, and classification to meet a strict <strong>200 ms full-text SLA</strong> while improving memory density.</li>
+<li>Developed C/C++ data-mining service around National Market System Tape A/B for streaming orders/quotes/trades.</li>
+<li>Built high-parallel Python tools for archived content delivery; extended taxonomy/symbology engine.</li>
+<li>Contributed research-engineering improvements for clustering, impact, sentiment, and volatility analysis algorithms, including libraries for memory density and network performance.</li>
+<li>Worked with Sales to expand news archive offerings through efficient slicing, replication, and reprocessing of the master archive for customer distribution contracts.</li>
+</ul>
+</div>
+<div class="role">
+<div class="top">
+<div class="company">OnSIP — Software Engineer</div>
+<div class="meta">Apr 2011 – Apr 2013 · New York, NY</div>
+</div>
+<ul>
+<li>Designed and implemented <strong>OpenSIPS call routing</strong> for transfers, voicemail, and cost-optimized routing across Asterisk PSTN and FreeSWITCH VoIP endpoints.</li>
+<li>Solved <strong>firewall and double-NAT challenges in VoIP</strong> through provisioning changes and fallback protocols in OpenSIPS routing and FreeSWITCH call bridges.</li>
+<li>Built distributed <strong>FreeSWITCH/MySQL voicemail infrastructure</strong> and <strong>E911 routing</strong>, provisioning physical phone locations so emergency calls delivered the correct office address to the appropriate PSAP; contributed code and technical documentation to FreeSWITCH and Asterisk.</li>
+</ul>
+</div>
+<div class="role">
+<div class="top">
+<div class="company">BCNSinc — Co-Founder / Lead Developer</div>
+<div class="meta">Oct 2008 – Jun 2017 · side venture · New York, NY</div>
+</div>
+<ul>
+<li>Co-founded and architected <strong>cloud hosting and SaaS infrastructure</strong> for medium-sized businesses, including hosted phones, storage, email, remote access, and business applications.</li>
+<li>Designed and operated the underlying <strong>virtualization, networking, high-availability, and disaster-recovery infrastructure</strong>, including KVM clusters, DRBD/Linux HA/NFS/ownCloud, and multi-site OpenVPN.</li>
+<li>Developed reusable SaaS and infrastructure solutions and provided systems analysis, network design, and hardware services; used open-source technologies to reduce licensing costs.</li>
+</ul>
+</div>
+<div class="role">
+<div class="top">
+<div class="company">Shooloo.org — Consulting Engineer</div>
+<div class="meta">Feb 2013 · Short-term engagement</div>
+</div>
+<ul>
+<li>Helped set up <strong>Linode infrastructure and deployment pipelines</strong> for a nonprofit organization.</li>
+</ul>
+</div>
+</section>
+<section>
+<h2>Education</h2>
+<p><strong>B.S., Computer Science – Software Engineering</strong> · College for Computer Science and Mathematics of Craiova, 2009</p>
+</section>
+<div class="footer">
+U.S. Citizen • Available Remote (ET) • Languages: English native/bilingual · Romanian native/bilingual · French elementary
+</div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.14.0/html2pdf.bundle.min.js"></script>
+<script>
+// NOTE: page-breaks are driven purely by CSS (break-inside/break-before rules
+// on .role, section, skill blocks) via the 'css' mode. 'avoid-all' is avoided
+// because it mis-fires on flex/grid layouts and injects spurious blank space.
+function downloadPDF(){
+  const element=document.getElementById('resume');
+  const opt={
+    margin:0, // canvas is full-bleed; #resume's own padding supplies the breathing room
+    filename:'Mihail_Comanescu_Resume.pdf',
+    image:{type:'png'}, // text-heavy doc: PNG avoids JPEG artifacts (quality setting is ignored for png)
+    html2canvas:{scale:2, backgroundColor:'#101010'}, // paint full canvas with site base color
+    jsPDF:{unit:'pt',format:'letter',orientation:'portrait',backgroundColor:'#101010'}, // jsPDF paints every page sheet dark, incl. any margin area
+    pagebreak:{mode:['css']}
+  };
+const btn=event.target;
+  const old=btn.textContent; btn.disabled=true; btn.textContent='Rendering…';
+  window.scrollTo(0,0); // capture must start at document top (scroll offset bug => blank/shifted pages)
+setTimeout(()=>{
+    document.body.classList.add('pdf-export'); // full-bleed dark page during capture only
+    const worker=html2pdf().set(opt).from(element);
+    worker.toContainer()
+    .then(function(){
+      // Extend the canvas to an EXACT multiple of the page height so the final
+      // page slice fully covers the sheet (no white strip after the last content).
+      // Letter = 612 x 792pt; container width (px) maps 1:1 to page width.
+      const c=this.prop.container;
+      const pagePx=c.offsetWidth*(792/612);
+      const rem=c.offsetHeight%pagePx;
+      if(rem>2){ // ignore sub-pixel remainders
+        const filler=document.createElement('div');
+        filler.style.height=(pagePx-rem)+'px';
+        filler.style.background='#101010';
+        c.appendChild(filler);
+      }
+      return this.toCanvas();
+    })
+.toImg().toPdf()
+    .then(function(){
+      // Kill the phantom blank last page: canvas height may round a hair over an
+      // exact page-height multiple, so jsPDF opens one more page holding a sliver.
+      // NOTE: .then() re-binds `this` to a fresh Worker whose prop is empty —
+      // use the original `worker` captured in the closure, and guard anyway.
+      // html2pdf.js >= 0.11: the jsPDF instance is worker.prop.pdf (prop.doc no longer exists).
+      const doc=worker.prop && worker.prop.pdf;
+      // prop.img is an <img> whose load is not awaited, so use the canvas for dimensions:
+      const canvas=worker.prop && worker.prop.canvas;
+      if(!doc||!canvas||typeof doc.getNumberOfPages!=='function') return;
+      const pageH=792, pageW=612; // letter, pt
+      // Canvas is shrunk to page width => effective height in pt:
+      const effH=canvas.height*(pageW/canvas.width);
+      const nPages=doc.getNumberOfPages();
+      if(effH%pageH < pageH*0.05 && nPages>Math.floor(effH/pageH)){
+        doc.deletePage(nPages); // last page is just a rounding sliver -> drop it
+      }
+    })
+    .save()
+    .then(()=>window.scrollTo(0,0)) // restore view position
+    .catch(err=>alert('PDF export failed: '+err))
+    .finally(()=>{document.body.classList.remove('pdf-export'); btn.disabled=false; btn.textContent=old;});
+  },150);
+}
+</script>
+</body>
+</html>
